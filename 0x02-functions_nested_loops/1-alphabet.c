@@ -3,7 +3,7 @@
 /**
  * entry - point
  * print alphabt in lower case
- * Return: always 0 (success)
+ * print_alphabet _ print alphabet with _putchar function
  */
 
 void print_alphabet(void)
