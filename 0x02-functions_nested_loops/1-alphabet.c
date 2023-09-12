@@ -1,9 +1,8 @@
 #include "main.h"
 
 /**
- * entry - point
- * print alphabt in lower case
- * print_alphabet _ print alphabet with _putchar function
+ * print_alphabet - utilize the _putchar function to print
+ *	alphabet a - z
  */
 
 void print_alphabet(void)
