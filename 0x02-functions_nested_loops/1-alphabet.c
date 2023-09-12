@@ -3,10 +3,10 @@
 /**
  * entry - point
  * print alphabt in lower case
- * Return: always 0 (success0)
+ * Return: always 0 (success)
  */
 
-void print_alphabet(void);
+void print_alphabet(void)
 {
 	int ch;
 
