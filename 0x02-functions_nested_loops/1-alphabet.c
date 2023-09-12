@@ -8,17 +8,8 @@
 
 void print_alphabet(void);
 {
-	char letter'a';
-	while (letter <= 'z')
-	{
-		_putchar(letter);
-		letter++;
-	}
-
+	int ch;
+	for(ch = 'a'; ch <= 'z'; ch++)
+		_putchar(ch);
 	_putchar('\n');
 }
-int main(void)
-{
-	print_alphabet();
-	return (0);
-		}
