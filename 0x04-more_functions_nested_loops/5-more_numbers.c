@@ -11,7 +11,7 @@ void more_numbers(void)
 	int num;
 
 	for (num = 0; num <= 9; num++)
-i	{
+	{
 		if (num == 2 || num == 4)
 			continue;
 		_putchar(num + 48);
