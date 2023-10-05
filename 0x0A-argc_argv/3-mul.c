@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlin.h>
+#include <stdlib.h>
 
 /**
  * main - print sum of 2 number.
