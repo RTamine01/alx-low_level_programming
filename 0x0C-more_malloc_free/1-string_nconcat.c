@@ -20,24 +20,21 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		s1 == "";
 	if (s2 == NULL)
 		s2 == "";
-	for (s1_length = 0; s1[s1_length] != '\0'; s1_length++)
-		;
-	for (s2_length = 0; s2[s2_length] != '\0'; s2_length++)
-		;
-	str = malloc(s1_length + n + 1);
-	if (str == NULL)
-	{
+	for (index = 0; s1[index]; index++)
+		len++;
+	concat = malloc(sizeof(char) * (len + 1));
+
+	if (concat == NULL)
 		return (NULL);
-	}
-	for (i = 0; s1[i] != '\0'; i++)
-		str[i] = s1[i];
 
-	for (j = 0; j < n; j++)
-	{
-		str[i] = s2[j];
-		i++;
-	}
+	len = 0;
 
-	str[i] = '\0';
-	return (str);
+	for (index = 0; s1[index]; index++)
+		concat[len++] = s1[index];
+
+	for (index = 0; s2[index] && index < n; index++)
+		concat[len++] = s2[index];
+
+	concat[len] = '\0';
+	return(concat);
 }
