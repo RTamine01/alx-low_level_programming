@@ -1,60 +1,56 @@
 #include "search_algos.h"
 
 /**
- * binary_search - function that searches for array value
- * @array: pointer to the first element of the array.
- * @size: number of elements in array.
- * @value: value to search for.
+ * print_array - prints the array of ints
  *
- * Return: the index where value is located.
+ * @array: pointer to an array
+ * @first: first index to print
+ * @last: last index to print
  */
-int binary_search(int *array, size_t size, int value)
-{
-	return (binary_search_index(array, 0, size - 1, value));
-}
 
-/**
- * binary_search_index - recursive function for helping binary_search.
- * @array: pointer to the first element of the array to search in.
- * @value: value to look for.
- *
- * Return: the index where value is located.
- */
-int binary_search_index(int *array, size_t l, size_t r, int value)
-{
-	int mid;
-
-	if (!array || l > r)
-		return (-1);
-	print_array(array, l, r);
-
-	mid = l + (r - l) / 2;
-
-	if (l == r)
-		return (*(array + mid) == value ? (int)mid : -1);
-
-	if (array[mid] == value)
-		return (mid);
-	else if (array[mid] > value)
-		return (binary_search_index(array, l, mid - 1, value));
-	else
-		return (binary_search_index(array, mid + 1, r, value));
-}
-
-/**
- * print_array - Prints an array of ints.
- * @array: array to be printed.
- * @l: left index of the array.
- * @r: right index of the array.
- */
-void print_array(int *array, size_t l, size_t r)
+void print_array(int *array, size_t first, size_t last)
 {
 	size_t i;
 
+	printf("Searching in array: ");
+	for (i = first; i <= last; i++)
+	{
+		if (i != first)
+			printf(", ");
+		printf("%d", array[i]);
+	}
+	printf("\n");
+}
+
+/**
+ * binary_search - searches for a value in an array of ints
+ *
+ * @array: pointer to the first element of the array to search in
+ * @size: number of elements in array
+ * @value: the value to search for
+ *
+ * Return: the index where value is located or -1 on failure or not found
+ */
+
+int binary_search(int *array, size_t size, int value)
+{
+	size_t i = 0, first = 0, last = size - 1;
+
 	if (array)
 	{
-		printf("Searching in array: ");
-		for (i = l; i < l + (r - l + 1); i++)
-			printf("%d%s", *(array + i), i < l + (r - l) ? ", " : "\n");
+		while (first <= last)
+		{
+			print_array(array, first, last);
+			i = (first + last) / 2;
+
+			if (value > array[i])
+				first = i + 1;
+			else if (value < array[i])
+				last = i - 1;
+			else
+				return (i);
+		}
 	}
+
+	return (-1);
 }
